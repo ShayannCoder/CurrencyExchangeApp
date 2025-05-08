@@ -10,7 +10,7 @@ public class CurrencyExchangeApp {
     }
 }
 
-class Exchange {// testing pull request
+class Exchange {
 
     LocalDateTime DateTime = LocalDateTime.now();
     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -31,6 +31,7 @@ class Exchange {// testing pull request
         sc.close();
         return rate;
     }
+
     public static float calculateExchange() {
         float money = moneyToBeExchanged();
         float rate = getRate();
