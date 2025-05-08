@@ -9,7 +9,17 @@ import java.util.*;
 
 public class CurrencyExchangeApp {
     public static void main(String[] args){
-        System.out.println(Exchange.calculateExchange());
+        System.out.println("Type 1 for calculatin exchange, 2 for viewing data: ");
+        Scanner sc=new Scanner(System.in);
+        int operationType= sc.nextInt();
+        if (operationType==1){//should change this to a while loop
+            System.out.println(Exchange.calculateExchange());
+        }else if(operationType==2) {
+            database.viewData();
+        }else{
+            System.out.println("Type 1 or 2.");
+        }
+        
         //Exchange ex1 = new Exchange();
         //System.out.println(ex1.timeStamp);
     }
@@ -49,22 +59,18 @@ class Exchange {
     }
 }
 class database {
-    public static void main(String[] args) {
+    public static void viewData() {
         try{
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/exchange_schema", "root", "yadbruh1");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM exchange_log");
             while(resultSet.next()) {
-                System.out.print("ID: ");
-                System.out.println(resultSet.getString("idexchange_log"));
-                System.out.print("Original Amount: ");
+                System.out.println("ID: "+resultSet.getString("idexchange_log"));
                 System.out.println(resultSet.getString("amount"));
-                System.out.print("Exchange rate: ");
                 System.out.println(resultSet.getString("rate"));
-                System.out.print("Resulting Amount: ");
                 System.out.println(resultSet.getString("result"));
-                System.out.print("Time: ");
                 System.out.println(resultSet.getString("timestamp"));
+                //connection.close(); this returns an error (figure out why)
         }
         }catch(SQLException e){
             e.printStackTrace();
@@ -84,6 +90,7 @@ class database {
             preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
+            System.out.println("Saved data to database.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
