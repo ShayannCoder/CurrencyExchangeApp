@@ -1,6 +1,8 @@
 # Currency Exchange App
 
-The **Currency Exchange App** is a simple Java-based application for our ITE project that calculates the exchanged amount of money based on the user-provided exchange rate and amount. It also displays a timestamp of when the exchange calculation was performed.
+
+The **Currency Exchange App** is a simple Java-based application that calculates the exchanged amount of money based on the user-provided exchange rate and amount. It also displays a timestamp of when the exchange calculation was performed.
+
 
 ## Features
 

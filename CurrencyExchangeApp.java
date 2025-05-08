@@ -10,7 +10,7 @@ public class CurrencyExchangeApp {
     }
 }
 
-class Exchange {
+class Exchange {// testing pull request
 
     LocalDateTime DateTime = LocalDateTime.now();
     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -20,6 +20,7 @@ class Exchange {
         Scanner sc = new Scanner(System.in);
         System.out.print("please enter the amount of money you want to exchange: ");
         float money = sc.nextFloat();
+        sc.close();
         return money;
     }
         
@@ -27,6 +28,7 @@ class Exchange {
         Scanner sc = new Scanner(System.in);
         System.out.print("please enter the current exchange rate: ");
         Float rate = sc.nextFloat();
+        sc.close();
         return rate;
     }
     public static float calculateExchange() {
