@@ -33,14 +33,6 @@ class Exchange {
         return sc.nextFloat();
     }
 
-    public static float calculateExchange() {
-        float money = moneyToBeExchanged();
-        float rate = rateGetter();
-        return money * rate;
-    }
-}
-
-class API {
     public static void getRate() {
         try {
             String apiKey = "76abdb90da458f91cb518b75";
@@ -55,4 +47,11 @@ class API {
             e.printStackTrace();
         }
     }
+
+    public static float calculateExchange() {
+        float money = moneyToBeExchanged();
+        float rate = rateGetter();
+        return money * rate;
+    }
 }
+
