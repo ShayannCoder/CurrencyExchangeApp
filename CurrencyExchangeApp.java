@@ -5,7 +5,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-//import org.json.JSONObject;
+import org.json.JSONObject;
 
 public class CurrencyExchangeApp {
     public static void main(String[] args){
@@ -43,6 +43,12 @@ class Exchange {
             .uri(URI.create(url))
             .build();
 
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            JSONObject json = new JSONObject(response.body());
+
+            double rate = json.getJSONObject("conversion_rates").getDouble("EUR");
+            System.out.println("1 USD = " + rate + " EUR");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,7 +56,7 @@ class Exchange {
 
     public static float calculateExchange() {
         float money = moneyToBeExchanged();
-        float rate = rateGetter();
+        float rate = getRate();
         return money * rate;
     }
 }
