@@ -1,16 +1,21 @@
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class CurrencyExchangeApp {
     public static void main(String[] args){
-        System.out.println(Exchange.calculateExchange());
-        Exchange ex1 = new Exchange();
-        System.out.println(ex1.timeStamp);
+        //System.out.println(Exchange.calculateExchange());
+        //Exchange ex1 = new Exchange();
+        //System.out.println(ex1.timeStamp);
     }
 }
 
-class Exchange {// testing pull request
+class Exchange {
 
     LocalDateTime DateTime = LocalDateTime.now();
     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -35,5 +40,23 @@ class Exchange {// testing pull request
         float money = moneyToBeExchanged();
         float rate = getRate();
         return money * rate;
+    }
+}
+class database {
+    public static void main(String[] args) {
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/login_schema", "root", "yadbruh1");
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM USERS");
+            while(resultSet.next()) {
+                System.out.println(resultSet.getString("name"));
+        }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+    }   
+    public static void testStatement(){
+        
     }
 }
