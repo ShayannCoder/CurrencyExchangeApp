@@ -10,7 +10,7 @@ public class CurrencyExchangeApp {
     }
 }
 
-class Exchange {
+class Exchange {// testing pull request
 
     LocalDateTime DateTime = LocalDateTime.now();
     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
